@@ -1,0 +1,57 @@
+TODO
+set score function as metric for easier tracking
+Try conbine FFTed image with original image      >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> probably this line does not work
+look at other kaggle classification task >> learn any tricks
+Think about hierarchical training >> i.e. 10 category first >> then transfer learn 30 cat?
+
+
+20191231-1313
+basically if untreated dataset 
+>> 60 epoch very enough for converge if used ReduceLROnPlateau 1e-4>1e-6
+>> very very small change for val until 120 epoch
+>> lr reached 1e-6 at epoch 46
+
+ - as 20200101_020711 show
+probably img+FFT-ed img is useless
+some train/val pattern but lower converge point
+but why?
+
+ - add gaussian noise as aug also useless
+
+
+
+
+
+
+Preprocessing & pipeline:
+-	Divide data set into train & val set
+-	Do cross validation
+If no restriction then can do whatever preprocessing?
+Even tune up things like contrast to make bg noise more obvious?
+Or even make it b/w etc to see if it works (better)?
+Train on different pre=processed image and combine the result? Taking avg etc
+
+
+Algo & architecture:
+-	Output continuous scalar but not category’
+	To leverage the relatedness of close years
+-	Wider receptive field should be emphasized
+	Coz the question is kind of “noise pattern recognition” for determining the year
+	Local feature less useful?
+-	Backbone: general conv net with large (or very large) kernel size?
+-	Or sets of different kernel size?
+Need test
+
+Loss function:
+-	Simply L1-loss?
+-	Or L2?
+-	Or cross entropy better?
+
+
+Hierarchical classification useful? – but mathematically the same, isn’t it?
+
+ICA /fourier analysis before feeding to deep network?? 
+>bad learning for FFTed image alone (real or concat(real, imag)) part
+still worth trying, maybe combine original image?
+
+
